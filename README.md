@@ -58,3 +58,15 @@ myReverse "A man, a plan, a canal, panama!"
 myReverse [1,2,3,4]
 > [4,3,2,1]
 ```
+
+## 6. Find out whether a list is a palindrome 
+```
+isPalindrome [1,2,3]
+> False
+
+isPalindrome "madamimadam"
+> True
+
+isPalindrome [1,2,4,8,16,8,4,2,1]
+> True
+```
