@@ -12,7 +12,7 @@ I will check those out one day
 it appears the wiki page is not complete yet?
 
 Sorted by, my solutions, then the solutions that 
-are not mine buy I thought were cool
+are not mine but I thought were cool
 
 ## 1. Find the last element of a list 
 ```
