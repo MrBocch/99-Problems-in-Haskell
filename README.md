@@ -1,18 +1,9 @@
-# I got 99 problems, but a monad aint one
+# 99 Problems in Haskell
 
 https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems
 
 I want to practice what im learning in haskell
 by working my way thrue these problems
-
-> These are Haskell translations of Ninety-Nine Lisp Problems, which are themselves translations of Ninety-Nine Prolog Problems. 
-
-I will check those out one day
-
-it appears the wiki page is not complete yet?
-
-Sorted by, my solutions, then the solutions that 
-are not mine but I thought were cool
 
 ## 1. Find the last element of a list 
 ```
