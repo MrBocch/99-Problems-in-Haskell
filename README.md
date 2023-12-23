@@ -28,7 +28,7 @@ myButLast ['a'..'z']
 elementAt [1,2,3] 2
 > 2
 
-elementAt "haskell"
+elementAt "haskell" 5
 > 'e'
 ```
 
