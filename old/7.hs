@@ -1,0 +1,3 @@
+-- A function which flattens a list
+-- i really struggled with this for 30 minutes and gave up
+-- i was not thinking in term of types
