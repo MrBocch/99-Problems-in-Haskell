@@ -81,3 +81,34 @@ p6 = starling (==) reverse
 -- I just love this page, i reference it all the time
 -- https://www.uiua.org/docs/combinators
 
+
+-- Flatten a nested list structure
+
+data NestedList a = Elem a | List [NestedList a]
+
+p7 :: NestedList a -> [a]
+p7 (List [])        = []
+p7 (List [Elem x])  = [x]  
+p7 (List (x:xs)) =  error "getting skilled issue so hard"
+p7 (Elem x)         = [x]
+
+
+-- Eliminate consecutive duplicates of list elemnts
+p8 :: Eq a => [a] -> [a]
+p8 []     = []
+p8 (x:xs) = x : removesDuplicates x xs 
+  where
+    removesDuplicates :: Eq a => a -> [a] -> [a]
+    removesDuplicates _ [] = []
+    removesDuplicates last (x:xs)
+      | last == x =     removesDuplicates x xs
+      | otherwise = x : removesDuplicates x (xs)
+
+
+-- Have no idea how I would point free this.
+-- compress = map head . group
+-- what is group? 
+-- my guess
+-- "aaabbccceddf"
+-- ["aaa", "bb", ....]
+-- define your own group function. point free
