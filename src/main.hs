@@ -112,3 +112,24 @@ p8 (x:xs) = x : removesDuplicates x xs
 -- "aaabbccceddf"
 -- ["aaa", "bb", ....]
 -- define your own group function. point free
+
+
+
+-- Pack consecutive duplicates of list elements into sublists
+p9 :: [Char] -> [String]
+p9 [] = []
+p9 (x:xs) = [x: takeWhile (==x) xs] ++ p9 (dropWhile (== x) xs)
+
+
+
+
+
+-- Run-length encoding of a list:
+p10 :: [Char] -> [(Int, Char)]
+p10 = map (phoenix (,) length head) . p9 
+  where 
+    -- Data.Aviary.Birds
+    phoenix :: (b -> c -> d) -> (a -> b) -> (a -> c) -> a -> d
+    phoenix f g h x = f (g x) (h x)
+
+-- so cool that making tuples is a function (,) (,,) (,,,)
