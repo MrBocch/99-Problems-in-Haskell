@@ -133,3 +133,21 @@ p10 = map (phoenix (,) length head) . p9
     phoenix f g h x = f (g x) (h x)
 
 -- so cool that making tuples is a function (,) (,,) (,,,)
+
+
+-- Duplicates the elemnts of a list 
+p14 :: [a] -> [a]
+p14 = concat . warbler (zipWith f)
+  where
+    warbler f x = f x x
+    f x y = [x,y]
+
+p14' :: [a] -> [a]
+p14' []     = []
+p14' (x:xs) = x:x : p14 xs 
+
+-- this is incredible
+-- concatMap (repeat 2)
+-- this is why its important to read stdlib
+
+
