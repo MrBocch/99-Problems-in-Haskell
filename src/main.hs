@@ -1,3 +1,5 @@
+import Data.Function 
+
 -- Find the last element of a list
 p1 :: [a] -> a
 p1 []     = error "What do you return on a empty list?"
@@ -150,4 +152,14 @@ p14' (x:xs) = x:x : p14 xs
 -- concatMap (repeat 2)
 -- this is why its important to read stdlib
 
+cardinal f x y = f y x 
 
+-- Drop every N'th element from a list 
+p16 :: [a] -> Int -> [a]
+p16 xs x = zip xs [1..]
+         & filter ((/=0) . cardinal mod x . snd)
+         & map fst 
+
+-- decided that i will only write point free functions
+-- if the function only takes one argument... for now.
+-- cool to use a infinite data structure like that also.
