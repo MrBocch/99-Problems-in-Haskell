@@ -163,3 +163,15 @@ p16 xs x = zip xs [1..]
 -- decided that i will only write point free functions
 -- if the function only takes one argument... for now.
 -- cool to use a infinite data structure like that also.
+
+
+-- Split a list into two parts; the length of the first part
+-- is given
+p17 :: [a] -> Int -> ([a], [a])
+p17 = pheasant (,) (cardinal take) (cardinal drop)
+  where
+    pheasant f g h a b = f (g a b) (h a b)
+
+-- so writing point free for functions that take
+-- multiple arguments, its just more combinators.
+-- neat.
