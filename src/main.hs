@@ -175,3 +175,14 @@ p17 = pheasant (,) (cardinal take) (cardinal drop)
 -- so writing point free for functions that take
 -- multiple arguments, its just more combinators.
 -- neat.
+
+
+-- Extract a slice from a list
+p18 :: [a] -> Int -> Int -> [a]
+p18 xs i j = drop (i-1) xs
+           & take (j-i+1)
+
+p18' :: [a] -> Int -> Int -> [a]
+p18' xs i j = zip xs [1..]
+            & filter (\(_, x) -> x >= i && x <= j)
+            & map fst 
