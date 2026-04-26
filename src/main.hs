@@ -137,6 +137,30 @@ p10 = map (phoenix (,) length head) . p9
 -- so cool that making tuples is a function (,) (,,) (,,,)
 
 
+-- Modified run-length encoding
+data Encoder a = Single a
+               | Multiple Int a  
+               deriving Show
+
+p11 :: Eq a => [a] -> [Encoder a]
+p11 [] = []
+p11 (x:xs)  = takeElems (x:xs) : p11 (drop (groupCount (x:xs)) (x:xs))
+  where
+    takeElems :: Eq a => [a] -> Encoder a
+    takeElems (x:xs)
+      | groupCount (x:xs) == 1 = Single x
+      | otherwise              = Multiple (groupCount (x:xs)) x 
+
+    groupCount (x:xs) = length (takeWhile (== x) (x:xs))
+
+p12 :: [Encoder a] -> [a]
+p12 []                 = []
+p12 (Single c     :xs) = [c] ++ p12 xs 
+p12 (Multiple x c :xs) = (take x $ repeat c) ++ p12 xs    
+
+-- dont get part 13
+-- wants me to rewrite p11 in a different way? 
+
 -- Duplicates the elemnts of a list 
 p14 :: [a] -> [a]
 p14 = concat . warbler (zipWith f)
@@ -153,6 +177,11 @@ p14' (x:xs) = x:x : p14 xs
 -- this is why its important to read stdlib
 
 cardinal f x y = f y x 
+
+-- Replicate the elements of a list a given number of times
+p15 :: [a] -> Int -> [a]
+p15 []     n = []
+p15 (x:xs) n = take n (repeat x) ++ p15 xs n
 
 -- Drop every N'th element from a list 
 p16 :: [a] -> Int -> [a]
