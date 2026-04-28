@@ -215,3 +215,22 @@ p18' :: [a] -> Int -> Int -> [a]
 p18' xs i j = zip xs [1..]
             & filter (\(_, x) -> x >= i && x <= j)
             & map fst 
+
+-- Rotate a list N places to the left.
+p19 :: [a] -> Int -> [a]
+p19 xs n
+  | abs n > length xs = error "normalize shifting by"
+
+  | n >= 0    = drop n xs ++ take n xs 
+  | otherwise = reverse $ p19 (reverse xs) (abs n)
+
+
+-- Remove the K'th element from a list.
+p20 :: Int -> [a] -> (a, [a])
+p20 k xs
+  | k+1 > length xs = error "out of bounds" 
+  | otherwise       = (,) (xs !! (k-1)) (zip xs [1..]
+                                        & filter (\x -> snd x /= k)
+                                        & map fst)
+                                     
+            
