@@ -232,5 +232,17 @@ p20 k xs
   | otherwise       = (,) (xs !! (k-1)) (zip xs [1..]
                                         & filter (\x -> snd x /= k)
                                         & map fst)
-                                     
-            
+
+-- insert a element at a given position into a list
+p21 :: a -> [a] -> Int -> [a]
+p21 el l at
+  | at > length l = error "what do?"       
+  | otherwise     = take (at -1) l ++ [el] ++ drop (at -1) l 
+
+-- create a list containing all integer withing a given range
+p22 :: Integer -> Integer -> [Integer]            
+p22 x y
+  | x > y     = []
+  | x == y    = [x]
+  | otherwise = x : p22 (x+1) y 
+-- p22 x y = [x..y]
